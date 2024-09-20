@@ -85,6 +85,7 @@ public sealed partial class NavMapBeaconWindow : FancyWindow
         _defaultLabel = LabelLineEdit.Text == string.Empty ? null : LabelLineEdit.Text;
         _defaultEnabled = VisibleButton.Pressed;
         _defaultColor = ColorSelector.Color;
+        _defaultBroadcast = BroadcastButton.Pressed;
         OnApplyButtonPressed?.Invoke(_defaultLabel, _defaultEnabled, _defaultColor, _defaultBroadcast);
         TryEnableApplyButton();
     }

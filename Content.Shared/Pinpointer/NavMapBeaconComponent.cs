@@ -39,5 +39,5 @@ public sealed partial class NavMapBeaconComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField]
     [AutoNetworkedField]
-    public bool Broadcast = true;
+    public bool Broadcast = false;
 }

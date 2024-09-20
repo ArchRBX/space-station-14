@@ -5,8 +5,8 @@ station-map-user-interface-flavor-right = v1.42
 nav-beacon-window-title = Station Beacon
 nav-beacon-toggle-visible = Visible
 nav-beacon-toggle-invisible = Invisible
-nav-beacon-toggle-broadcast-on = Broadcast On
-nav-beacon-toggle-broadcast-off = Broadcast Off
+nav-beacon-toggle-broadcast-on = IFF On
+nav-beacon-toggle-broadcast-off = IFF Off
 nav-beacon-text-label = Label:
 nav-beacon-button-apply = Apply
 nav-beacon-examine-text = It is [color={$enabled ->
