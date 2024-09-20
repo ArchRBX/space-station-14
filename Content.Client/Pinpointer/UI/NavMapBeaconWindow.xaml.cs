@@ -13,18 +13,19 @@ public sealed partial class NavMapBeaconWindow : FancyWindow
     private string? _defaultLabel;
     private bool _defaultEnabled;
     private Color _defaultColor;
+    private bool _defaultBroadcast;
 
-    public event Action<string?, bool, Color>? OnApplyButtonPressed;
+    public event Action<string?, bool, Color, bool>? OnApplyButtonPressed;
 
     public NavMapBeaconWindow()
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
 
-
         VisibleButton.OnPressed += args => UpdateVisibleButton(args.Button.Pressed);
         LabelLineEdit.OnTextChanged += OnTextChanged;
         ColorSelector.OnColorChanged += _ => TryEnableApplyButton();
+        BroadcastButton.OnPressed += args => UpdateBroadcastButton(args.Button.Pressed);
 
         TryEnableApplyButton();
         ApplyButton.OnPressed += OnApplyPressed;
@@ -35,10 +36,12 @@ public sealed partial class NavMapBeaconWindow : FancyWindow
         _defaultLabel = navMap.Text;
         _defaultEnabled = navMap.Enabled;
         _defaultColor = navMap.Color;
+        _defaultBroadcast = navMap.Broadcast;
 
         UpdateVisibleButton(navMap.Enabled);
         LabelLineEdit.Text = navMap.Text ?? string.Empty;
         ColorSelector.Color = navMap.Color;
+        UpdateBroadcastButton(navMap.Broadcast);
     }
 
     private void UpdateVisibleButton(bool value)
@@ -47,6 +50,16 @@ public sealed partial class NavMapBeaconWindow : FancyWindow
         VisibleButton.Text = Loc.GetString(value
             ? "nav-beacon-toggle-visible"
             : "nav-beacon-toggle-invisible");
+
+        TryEnableApplyButton();
+    }
+
+    private void UpdateBroadcastButton(bool value)
+    {
+        BroadcastButton.Pressed = value;
+        BroadcastButton.Text = Loc.GetString(value
+            ? "nav-beacon-toggle-broadcast-on"
+            : "nav-beacon-toggle-broadcast-off");
 
         TryEnableApplyButton();
     }
@@ -63,7 +76,8 @@ public sealed partial class NavMapBeaconWindow : FancyWindow
     {
         ApplyButton.Disabled = LabelLineEdit.Text == (_defaultLabel ?? string.Empty) &&
                                VisibleButton.Pressed == _defaultEnabled &&
-                               ColorSelector.Color == _defaultColor;
+                               ColorSelector.Color == _defaultColor &&
+                               BroadcastButton.Pressed == _defaultBroadcast;
     }
 
     private void OnApplyPressed(BaseButton.ButtonEventArgs obj)
@@ -71,7 +85,7 @@ public sealed partial class NavMapBeaconWindow : FancyWindow
         _defaultLabel = LabelLineEdit.Text == string.Empty ? null : LabelLineEdit.Text;
         _defaultEnabled = VisibleButton.Pressed;
         _defaultColor = ColorSelector.Color;
-        OnApplyButtonPressed?.Invoke(_defaultLabel, _defaultEnabled, _defaultColor);
+        OnApplyButtonPressed?.Invoke(_defaultLabel, _defaultEnabled, _defaultColor, _defaultBroadcast);
         TryEnableApplyButton();
     }
 }

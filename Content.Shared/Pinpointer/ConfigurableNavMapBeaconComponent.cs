@@ -19,12 +19,14 @@ public sealed class NavMapBeaconConfigureBuiMessage : BoundUserInterfaceMessage
     public string? Text;
     public bool Enabled;
     public Color Color;
+    public bool Broadcast;
 
-    public NavMapBeaconConfigureBuiMessage(string? text, bool enabled, Color color)
+    public NavMapBeaconConfigureBuiMessage(string? text, bool enabled, Color color, bool broadcast)
     {
         Text = text;
         Enabled = enabled;
         Color = color;
+        Broadcast = broadcast;
     }
 }
 

@@ -33,4 +33,11 @@ public sealed partial class NavMapBeaconComponent : Component
     [ViewVariables(VVAccess.ReadWrite), DataField]
     [AutoNetworkedField]
     public bool Enabled = true;
+
+    /// <summary>
+    /// Only Broadcasting beacons can be seen on a navigational console.
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite), DataField]
+    [AutoNetworkedField]
+    public bool Broadcast = true;
 }
