@@ -36,12 +36,12 @@ public sealed partial class NavMapBeaconWindow : FancyWindow
         _defaultLabel = navMap.Text;
         _defaultEnabled = navMap.Enabled;
         _defaultColor = navMap.Color;
-        _defaultBroadcast = navMap.Broadcast;
+        _defaultBroadcast = navMap.ShowIFF;
 
         UpdateVisibleButton(navMap.Enabled);
         LabelLineEdit.Text = navMap.Text ?? string.Empty;
         ColorSelector.Color = navMap.Color;
-        UpdateBroadcastButton(navMap.Broadcast);
+        UpdateBroadcastButton(navMap.ShowIFF);
     }
 
     private void UpdateVisibleButton(bool value)

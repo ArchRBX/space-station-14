@@ -186,7 +186,7 @@ public sealed partial class NavMapSystem : SharedNavMapSystem
         if (beacon.Text == args.Text &&
             beacon.Color == args.Color &&
             beacon.Enabled == args.Enabled &&
-            beacon.Broadcast == args.Broadcast)
+            beacon.ShowIFF == args.Broadcast)
             return;
 
         _adminLog.Add(LogType.Action, LogImpact.Medium,
@@ -200,7 +200,7 @@ public sealed partial class NavMapSystem : SharedNavMapSystem
         beacon.Text = args.Text;
         beacon.Color = args.Color;
         beacon.Enabled = args.Enabled;
-        beacon.Broadcast = args.Broadcast;
+        beacon.ShowIFF = args.Broadcast;
 
         UpdateBeaconEnabledVisuals((ent, beacon));
         UpdateNavMapBeaconData(ent, beacon);
@@ -227,7 +227,7 @@ public sealed partial class NavMapSystem : SharedNavMapSystem
             ("enabled", navMap.Enabled),
             ("color", navMap.Color.ToHexNoAlpha()),
             ("label", navMap.Text ?? string.Empty),
-            ("iff", navMap.Broadcast)));
+            ("iff", navMap.ShowIFF)));
     }
 
     #endregion
