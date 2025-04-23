@@ -41,3 +41,16 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 1
+
+- type: listing
+  id: PAIHologram
+  name: pai-hologram-name
+  description: pai-hologram-desc
+  productAction: ActionPAIHologram
+  cost:
+    SiliconMemory: 15
+  categories:
+  - PAIAbilities
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1

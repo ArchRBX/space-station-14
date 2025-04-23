@@ -190,7 +190,7 @@
   - type: InstantAction
     checkCanInteract: false
     checkConsciousness: false
-    icon: Interface/Actions/pai-midi.png
+    icon: { sprite: Interface/Actions/actions_pai.rsi, state: midi }
     itemIconStyle: NoItem
     event: !type:OpenUiActionEvent
       key: enum.InstrumentUiKey.Key
@@ -203,7 +203,20 @@
     - type: InstantAction
       checkCanInteract: false
       checkConsciousness: false
-      icon: { sprite: Interface/Actions/pai-map.rsi, state: icon }
+      icon: { sprite: Interface/Actions/actions_pai.rsi, state: map }
+      itemIconStyle: NoItem
+      event: !type:OpenUiActionEvent
+        key: enum.StationMapUiKey.Key
+
+- type: entity
+  id: ActionPAIHologram
+  name: Project Hologram
+  description: Project a hologram to assist your owner.
+  components:
+    - type: InstantAction
+      checkCanInteract: false
+      checkConsciousness: false
+      icon: { sprite: Interface/Actions/actions_pai.rsi, state: hologram }
       itemIconStyle: NoItem
       event: !type:OpenUiActionEvent
         key: enum.StationMapUiKey.Key
